@@ -22,24 +22,23 @@ class Windowing:
         self.hop_length = hop_length if hop_length else self.window_size // 2
     
     def __call__(self, waveform):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
+        windows = []
 
-        return windows
+        left_pad = np.zeros(self.window_size // 2)
+        right_pad = np.zeros(self.window_size // 2)
+        waveform_with_padding = np.concat([left_pad, waveform, right_pad])
+        for start in range(0, waveform_with_padding.shape[0] - self.window_size + 1, self.hop_length):
+            end = start + self.window_size
+            windows.append(waveform_with_padding[start: end])
+        return np.stack(windows)
     
 
 class Hann:
     def __init__(self, window_size=1024):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
-
+        self.hann_window = scipy.signal.windows.hann(window_size, sym=False)
     
     def __call__(self, windows):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
+        return self.hann_window * windows
 
 
 
@@ -48,11 +47,9 @@ class DFT:
         self.n_freqs = n_freqs
 
     def __call__(self, windows):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
-
-        return spec
+        spec = np.fft.rfft(windows, n=None)
+        spec = np.absolute(spec)
+        return spec[:, :self.n_freqs]
 
 
 class Square:
@@ -62,23 +59,23 @@ class Square:
 
 class Mel:
     def __init__(self, n_fft, n_mels=80, sample_rate=22050):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
+        self.mel_matrix = librosa.filters.mel(
+            sr=sample_rate,
+            n_fft=n_fft,
+            n_mels=n_mels,
+            fmin=1,
+            fmax=8192,
+        )
+        self.mel_pinv_matrix = np.linalg.pinv(self.mel_matrix)
+
 
 
     def __call__(self, spec):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
-
+        mel = spec @ self.mel_matrix.T
         return mel
 
     def restore(self, mel):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
-
+        spec = mel @ self.mel_pinv_matrix.T
         return spec
 
 
