@@ -129,88 +129,74 @@ class Wav2Mel:
 
 class TimeReverse:
     def __call__(self, mel):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
+        return mel[::-1, :]
 
 
 
 class Loudness:
     def __init__(self, loudness_factor):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
+        self.loudness_factor = loudness_factor
 
 
     def __call__(self, mel):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
+        return self.loudness_factor * mel
 
 
 
 
 class PitchUp:
     def __init__(self, num_mels_up):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
+        self.k = num_mels_up
 
 
     def __call__(self, mel):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
+        mel_pitched = np.zeros_like(mel)
+        mel_pitched[:, self.k:] = mel[:, :-self.k]
+        mel_pitched[:, :self.k] = 0
+        return mel_pitched
 
 
 
 class PitchDown:
     def __init__(self, num_mels_down):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
-
+        self.k = num_mels_down
 
     def __call__(self, mel):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
+        mel_pitched = np.zeros_like(mel)
+        mel_pitched[:, :-self.k] = mel[:, self.k:]
+        mel_pitched[:, -self.k:] = 0
+        return mel_pitched
+        
 
 
 
 class SpeedUpDown:
     def __init__(self, speed_up_factor=1.0):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
-
+        self.speed_up_factor = speed_up_factor
 
     def __call__(self, mel):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
+        indices = np.linspace(0, mel.shape[0] - 1, int(self.speed_up_factor * mel.shape[0]))
+        indices = np.round(indices).astype("int")
+        return mel[indices, :]
+        
 
 
 
 class FrequenciesSwap:
     def __call__(self, mel):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
+        return mel[:, ::-1]
 
 
 
 class WeakFrequenciesRemoval:
     def __init__(self, quantile=0.05):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
-
+        self.q = quantile
 
     def __call__(self, mel):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
-        # ^^^^^^^^^^^^^^
+        value = np.quantile(mel, self.q)
+        out = np.copy(mel)
+        out[np.where(mel < value)] = 0
+        return out
 
 
 
