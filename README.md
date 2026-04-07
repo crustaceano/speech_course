@@ -14,15 +14,32 @@
     - Seminar: Train VAD models, intro to the homework
     - Homework (15pt): Train SED models; (3pt bonus) SED models vibecoding
 
-- Week 3: [Slides](https://docs.google.com/presentation/d/1iBHjRY3W0kHvBUhFl5Vf76DK9glwwLmAZvUJ7JzcZyE/edit?usp=sharingg) | [Seminar](https://disk.yandex.ru/i/DWI1hzJ5eZMBLw)
+- Week 3: [Slides](https://docs.google.com/presentation/d/1iBHjRY3W0kHvBUhFl5Vf76DK9glwwLmAZvUJ7JzcZyE/edit?usp=sharingg) | [Lecture](https://disk.yandex.ru/i/AgmlIrd0_KZdEA) [Seminar](https://disk.yandex.ru/i/DWI1hzJ5eZMBLw)
     - Lecture: Keyword Spotting and Speech Biometrics tasks
     - Seminar: Train Biometrics model and look at embeddings
     - Homework (20pt): Train Biometrics model ECAPA-TDNN with contrastive loss
 
-- Week 4 [Slides](https://docs.google.com/presentation/d/1TGAaI4uHM1pCkP8sS-ExIqJxaQyXOfEesOr4dIKYlfY) | [Lecture+Seminar](https://disk.yandex.ru/i/nY4RniGGOxaPFg):
+- Week 4 [Slides](https://docs.google.com/presentation/d/1TGAaI4uHM1pCkP8sS-ExIqJxaQyXOfEesOr4dIKYlfY) | [Lecture+Seminar](https://disk.yandex.ru/i/nY4RniGGOxaPFg)
     - Lecture: Speech Recognition I
     - Seminar: CTC forward-backward, soft alignment
     - Homework (10pt): CTC/RNN-T decoding, RNN-T forward-backward
+
+- Week 5 [Slides](https://docs.google.com/presentation/d/10rdROxSQ0N3Kctei8B006We1Ra1n0dS6Hn4PZzJ52gs/edit?usp=sharing) | [Lecture](https://disk.yandex.ru/i/tWqBUIUlQPe22A) | [Seminar](https://disk.yandex.ru/i/aeA_qoYTsFElKQ)
+    - Lecture: Pretraining in Speech Recognition
+    - Seminar: Speech Pretraining - quantization and losses
+    - Homework (5pt): Speech Pretraining
+
+- Week 6 [Slides](https://docs.google.com/presentation/d/1AA8M8-kSMlX4F4qrCnE_COp_vvyL1pO9Gv77s2Rj5dg/edit?usp=sharing) | [Lecture](https://disk.yandex.ru/i/-dfJ7Hnm5VgMCw)
+    - Leсture: ASR Inference
+    - Homework (5pt): Implement streaming inference
+
+- Week 7 [Slides](https://docs.google.com/presentation/d/12w0YcIQKkEFElzPJMj1xmxg3LZft-ExP0KilP2izSqA/edit?usp=sharing) | [Lecture](https://disk.yandex.ru/i/nLLBPCDfLwVLtg)
+    - Lecture: Intro to TTS. Normalisation, Tasks, Metrics
+
+- Week 8 [Slides](https://docs.google.com/presentation/d/1L_bv9B8mvKY7PO86pSnKQQdIqzzrYMnArNi0Nq1rsxw/edit?usp=sharing)
+    - Lecture: Tacotron2, FastPitch, HiFiGAN
+    - Seminar (5pt): Implement pitch estimation
+    - Homework (10pt): Implement FastPitch
 
 <details>
 <summary>
