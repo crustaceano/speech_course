@@ -4,13 +4,15 @@ import numpy as np
 
 def save_figure_to_numpy(fig):
     fig.canvas.draw()
-    image_flat = np.frombuffer(fig.canvas.tostring_rgb(), dtype='uint8')  # (H * W * 3,)
-    width, height = fig.canvas.get_width_height(physical=True)
-    image = image_flat.reshape(height, width, 3)  # (H, W, 3)
-    image = np.moveaxis(image, 2, 0)
-    plt.close(fig)
 
-    return image
+    buf = np.frombuffer(fig.canvas.tostring_argb(), dtype=np.uint8)
+    width, height = fig.canvas.get_width_height()
+    buf = buf.reshape(height, width, 4)
+
+    buf = buf[:, :, [1, 2, 3]]
+
+    plt.close(fig)
+    return buf
 
 def plot_spectrogram_to_numpy(spectrogram):
     fig, ax = plt.subplots(figsize=(12, 3))
