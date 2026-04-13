@@ -48,7 +48,7 @@ class FastpitchLogger:
         logger.info(f"Logging {len(images_dict)} images")
         for image_tag, image in images_dict.items():
             self.files_logger.add_image(
-                f'{image_tag}', image, global_step=step,
+                f'{image_tag}', image, global_step=step, dataformats='HWC',
             )
         self.files_logger.flush()
 
