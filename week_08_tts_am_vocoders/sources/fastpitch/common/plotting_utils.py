@@ -5,14 +5,12 @@ import numpy as np
 def save_figure_to_numpy(fig):
     fig.canvas.draw()
 
-    buf = np.frombuffer(fig.canvas.tostring_argb(), dtype=np.uint8)
+    buf = np.frombuffer(fig.canvas.buffer_rgba(), dtype=np.uint8)
     width, height = fig.canvas.get_width_height()
-    buf = buf.reshape(height, width, 4)
-
-    buf = buf[:, :, [1, 2, 3]]
+    image = buf.reshape(height, width, 4)[:, :, :3].copy()  # (H, W, 3)
 
     plt.close(fig)
-    return buf
+    return image
 
 def plot_spectrogram_to_numpy(spectrogram):
     fig, ax = plt.subplots(figsize=(12, 3))
