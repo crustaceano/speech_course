@@ -29,7 +29,7 @@ class WhisperModel:
     def predict(self, audios: list[Wav]) -> list[str]:
         processed_audios = [resample_audio(audio) for audio in audios]
         inputs = self.processor(processed_audios, return_tensors="pt", sampling_rate=16000).to(self.device)
-        generated_ids = self.model.generate(inputs=inputs.input_features, forced_decoder_ids=self.forced_decoder_ids)
+        generated_ids = self.model.generate(input_features=inputs.input_features, forced_decoder_ids=self.forced_decoder_ids)
         transcriptions = self.processor.batch_decode(generated_ids, skip_special_tokens=True)
         return transcriptions
     
