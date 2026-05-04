@@ -148,11 +148,15 @@ class MNISTEncoderDecoder(L.LightningModule):
         return loss
 
     def training_step_with_quantizer(self, pictures_batch):
-        # Your code here
-        raise NotImplementedError("TODO: assignment")
+        encoded = self.encoder(pictures_batch)
+        z_quantized = self.quantizer(encoded)
+        loss_vq = self.vq_loss_fn(encoded, z_quantized)
 
-        # ^^^^^^^^^^^^^^
-
+        z_quantized = encoded + (z_quantized - encoded).detach()
+        predicted = self.decoder(z_quantized)
+        recon_loss = self.reconstr_loss_fn(predicted, pictures_batch)
+        
+        loss = recon_loss + loss_vq
         return loss
 
     def on_after_backward(self):
