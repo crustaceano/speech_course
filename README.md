@@ -7,7 +7,7 @@
 - Week 1: [Slides](https://docs.google.com/presentation/d/1MS_mj4TnXX5emzyulBwElyLLlnw2IG7ZoshXUtK84_8/edit?usp=sharing) | [Lecture](https://disk.yandex.ru/d/T6ZyKv_7bo_lUg) | [Seminar](https://disk.yandex.ru/i/QSG30iIUF3648g)
     - Lecture: Intro to Digital Signal Processing (DSP)
     - Seminar: Implement DSP pipeline
-    - Homework (<TBD>pt): Implement mel-spectrogram transformations
+    - Homework (5pt): Implement mel-spectrogram transformations
 
 - Week 2: [Slides](https://docs.google.com/presentation/d/1OKeUW8f7SrKNh5W8LG4rnebqrtPBTibg1sn9-f9fq1I/edit?usp=sharing) | [Lecture](https://disk.yandex.ru/i/g8lCY4vr0voh5Q) | [Seminar](https://disk.yandex.ru/d/XxjSFpDF7V-N0Q)
     - Lecture: Introduction to speech NN discriminative models. Voice Activity Detection (VAD) and Sound Event Detection (SED) tasks
@@ -36,10 +36,20 @@
 - Week 7 [Slides](https://docs.google.com/presentation/d/12w0YcIQKkEFElzPJMj1xmxg3LZft-ExP0KilP2izSqA/edit?usp=sharing) | [Lecture](https://disk.yandex.ru/i/nLLBPCDfLwVLtg)
     - Lecture: Intro to TTS. Normalisation, Tasks, Metrics
 
-- Week 8 [Slides](https://docs.google.com/presentation/d/1L_bv9B8mvKY7PO86pSnKQQdIqzzrYMnArNi0Nq1rsxw/edit?usp=sharing)
+- Week 8 [Slides](https://docs.google.com/presentation/d/1L_bv9B8mvKY7PO86pSnKQQdIqzzrYMnArNi0Nq1rsxw/edit?usp=sharing) | [Lecture](https://disk.yandex.ru/i/ojvxvVZAjd9GQg)
     - Lecture: Tacotron2, FastPitch, HiFiGAN
     - Seminar (5pt): Implement pitch estimation
     - Homework (10pt): Implement FastPitch
+
+- Week 9 [Slides](https://docs.google.com/presentation/d/1MMNb_FKuRE1rq2f1fCrVjnFewmH9qpB1835nWoibVTI/edit?usp=sharing) | [Lecture](https://disk.yandex.ru/i/ZavO7g1SPtSB3Q) | [Seminar](https://disk.yandex.ru/i/LK0jCg2E3r-5VA)
+    - Lecture: Quantisation and Neural codecs
+    - Seminar: Implement several quantisation methods
+    - Homework (10pt): Implement more advanced quantisations and audio codecs
+ 
+- Week 10 [Lecture](https://disk.yandex.ru/d/4Uv2tOsWcwzDqA)
+
+- Week 11 [Lecture](https://disk.yandex.ru/i/JddYxXDCXiHo-Q)
+
 
 <details>
 <summary>
