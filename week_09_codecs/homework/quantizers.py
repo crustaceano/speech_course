@@ -56,22 +56,30 @@ class VectorQuantizer(nn.Module):
         self.embedding_dim = embedding_dim
         self.codebook = nn.Embedding(codebook_size, embedding_dim)
         self.codebook.weight.data.copy_(uniform_init(codebook_size, embedding_dim))
+    
+    def calculate_squared_distances(self, tensor_1: torch.Tensor, tensor_2: torch.Tensor) -> torch.Tensor:
+        """
+        tensor_1: float tensor with shape [sequence_1, embedding] 
+        tensor_2: float tensor with shape [sequence_2, embedding]
+        output: float tensor with shape [sequence_1, sequence_2]
+        """
+        tensor_1 = tensor_1[:, None, :]
+        tensor_2 = tensor_2[None, :, :]
+        distances = ((tensor_1 - tensor_2) ** 2).sum(dim=2)
 
+        return distances
+    
     def encode(self, z: torch.Tensor) -> torch.Tensor:
         assert z.dim() == 3
         B, D, T = z.shape
-        # YOUR CODE HERE
-        # <SOLUTION_START>
-        # ...
-        # <SOLUTION_END>
-        pass
+        z = z.permute(0, 2, 1).reshape(B * T, D)
+        dists = self.calculate_squared_distances(z, self.codebook.weight)
+        indicies = torch.argmin(dists, dim=-1, keepdim=False)
+        return indicies.reshape(B, T)
 
     def decode(self, indices: torch.Tensor) -> torch.Tensor:
-        # YOUR CODE HERE
-        # <SOLUTION_START>
-        # ...
-        # <SOLUTION_END>
-        pass
+        embs = self.codebook(indices)
+        return embs.permute(0, 2, 1)
 
     def forward(self, z: torch.Tensor) -> torch.Tensor:
         return self.decode(self.encode(z))
